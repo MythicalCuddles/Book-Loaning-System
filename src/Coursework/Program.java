@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class Program extends Application {
-    Image iconLogo = new Image("http://scm.ulster.ac.uk/~B00714027/files/icons/books.png");
+    private static Image iconLogo = new Image("http://scm.ulster.ac.uk/~B00714027/files/icons/books.png");
 
     @Override
     public void start(Stage stage) throws Exception {

@@ -1,10 +1,12 @@
 package Coursework.Controllers;
 
 import Coursework.Program;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -34,5 +36,11 @@ public class MainMenuController implements Initializable {
     @FXML
     private void btnDisplayBooksOnLoanOnAction(ActionEvent e) throws Exception {
 
+    }
+
+    @FXML
+    private void btnQuitOnAction(ActionEvent e) {
+        Platform.exit();
+        System.exit(0);
     }
 }

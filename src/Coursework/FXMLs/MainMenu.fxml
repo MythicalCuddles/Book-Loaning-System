@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -8,14 +9,19 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" minHeight="400" maxHeight="400" prefWidth="640.0" minWidth="640" maxWidth="640" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Coursework.Controllers.MainMenuController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Coursework.Controllers.MainMenuController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Log Out" />
                         <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Import Books" />
+                        <MenuItem mnemonicParsing="false" text="Export Books" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -28,19 +34,39 @@
         </MenuBar>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="300.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
             <children>
-                <ImageView fx:id="ivLogoImage" fitHeight="120.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true" />
-                <Button onAction="#btnAddNewBookOnAction" layoutX="220.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Add New Book" />
-                <Button onAction="#btnDisplayAvailableBooksOnAction" layoutX="220.0" layoutY="218.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Display Available Books" />
-                <Button onAction="#btnDisplayBooksOnLoanOnAction" layoutX="220.0" layoutY="248.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Display Books On Loan" />
-                <Button layoutX="220.0" layoutY="278.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Loan Book" />
-                <Button layoutX="220.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Return Book" />
-                <Button layoutX="220.0" layoutY="338.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Log Out" />
-                <Label alignment="TOP_CENTER" layoutY="125.0" prefHeight="55.0" prefWidth="640.0" text="Welcome back, User!">
+                <ImageView fx:id="ivLogoImage" fitHeight="120.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                <Button onAction="#btnAddNewBookOnAction" layoutX="220.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Add New Book" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" />
+                <Button onAction="#btnDisplayAvailableBooksOnAction" layoutX="220.0" layoutY="218.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Display Available Books" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" />
+                <Button onAction="#btnDisplayBooksOnLoanOnAction" layoutX="220.0" layoutY="248.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Display Books On Loan" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" />
+                <Button onAction="#btnQuitOnAction" layoutX="220.0" layoutY="278.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Quit" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" />
+                <Label alignment="CENTER" layoutY="125.0" prefHeight="25.0" prefWidth="643.0" text="Welcome back, User!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutY="150.0" prefHeight="25.0" prefWidth="640.0" text="Please select an option from the menu below.">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
             </children>
         </AnchorPane>
+        <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0">
+            <children>
+                <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="11.0" fx:id="x3" />
+                    </font>
+                    <textFill>
+                        <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+                    </textFill>
+                </Label>
+                <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+                <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+            </children>
+            <padding>
+                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+            </padding>
+        </HBox>
     </children>
 </VBox>
