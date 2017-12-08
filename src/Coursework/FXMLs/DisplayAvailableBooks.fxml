@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Coursework.Controllers.DisplayAvailableBooksController">
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Back To Main Menu" />
+                        <MenuItem mnemonicParsing="false" text="Log Out" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" text="Help" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <SplitPane dividerPositions="0.22605790645879734" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <items>
+                <AnchorPane>
+                    <children>
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Please Select" textAlignment="CENTER" wrapText="false">
+                            <font>
+                                <Font size="18.0" fx:id="x1" />
+                            </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="53.0" text="Display Available Books For">
+                            <font>
+                                <Font name="Segoe UI" size="13.0" />
+                            </font></Label>
+                        <Button fx:id="btnDisplayFiction" onAction="#btnDisplayFiction" layoutX="15.0" layoutY="75.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Fiction" />
+                        <Button fx:id="btnDisplayNonFiction" onAction="#btnDisplayNonFictionOnAction" layoutX="15.0" layoutY="105.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Non-Fiction" />
+                        <Label layoutX="15.0" layoutY="156.0" text="Search For Book">
+                            <font>
+                                <Font name="Segoe UI" size="13.0" />
+                            </font>
+                        </Label>
+                        <TextField layoutX="15.0" layoutY="206.0" prefHeight="25.0" prefWidth="170.0" promptText="Book Title" />
+                        <TextField layoutX="15.0" layoutY="236.0" prefHeight="25.0" prefWidth="170.0" promptText="Author" />
+                        <SplitMenuButton layoutX="15.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Genre">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Any" />
+                                <Menu mnemonicParsing="false" text="Fiction">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Mystery" />
+                                        <MenuItem mnemonicParsing="false" text="Horror" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Non-Fiction">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Something" />
+                                        <MenuItem mnemonicParsing="false" text="Else" />
+                                    </items>
+                                </Menu>
+                            </items>
+                        </SplitMenuButton>
+                        <Button fx:id="btnDisplayNonFiction1" layoutX="109.0" layoutY="296.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Search" />
+                        <Button layoutX="15.0" layoutY="512.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Loan Book" />
+                        <Line endX="100.0" layoutX="100.0" layoutY="470.0" startX="-100.0" />
+                        <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="478.0" style="&#10;" text="Options" textAlignment="CENTER" wrapText="false" />
+                        <TextField layoutX="16.0" layoutY="176.0" prefHeight="25.0" prefWidth="170.0" promptText="ID" />
+                    </children>
+                </AnchorPane>
+                <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+                    <content>
+                        <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+                            <children>
+                                <TableView fx:id="tvBookTable" editable="true" layoutY="-1.0" prefHeight="551.0" prefWidth="691.0">
+                                    <columns>
+                                        <TableColumn fx:id="tcBookId" prefWidth="50.0" maxWidth="50.0" minWidth="50.0" resizable="false" text="ID" />
+                                        <TableColumn fx:id="tcBookTitle" prefWidth="230.0" text="Title" />
+                                        <TableColumn fx:id="tcBookAuthor" prefWidth="230.0" text="Author" />
+                                        <TableColumn fx:id="tcBookGenre" prefWidth="159.0" text="Genre" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="asdf" textAlignment="CENTER" textFill="$x2" visible="false" wrapText="false" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+            </items>
+        </SplitPane>
+        <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+            <children>
+                <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="11.0" fx:id="x3" />
+                    </font>
+                    <textFill>
+                        <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+                    </textFill>
+                </Label>
+                <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+                <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+            </children>
+            <padding>
+                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+            </padding>
+        </HBox>
+    </children>
+</VBox>
