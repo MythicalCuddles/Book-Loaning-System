@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Coursework.Controllers.AddBookController">
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="miFileQuit" mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="miHelpAbout" mnemonicParsing="false" text="About" />
+                        <MenuItem fx:id="miHelpHelp" mnemonicParsing="false" text="Help" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Label alignment="CENTER" layoutY="1.0" prefHeight="19.0" prefWidth="640.0" text="Add New Book">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <SplitPane dividerPositions="0.2" layoutY="28.0" orientation="VERTICAL" prefHeight="347.0" prefWidth="640.0">
+                    <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <children>
+                                <Label layoutX="205.0" layoutY="6.0" text="Which type of Book would you like to add?" />
+                                <Button layoutX="190.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Fiction" />
+                                <Button layoutX="324.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Non-Fiction" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="246.0" prefWidth="638.0">
+                            <children>
+                                <TextField disable="true" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="287.0" promptText="ID" />
+                                <TextField layoutX="14.0" layoutY="61.0" prefHeight="25.0" prefWidth="287.0" promptText="Book Title" />
+                                <TextField layoutX="14.0" layoutY="91.0" prefHeight="25.0" prefWidth="287.0" promptText="Book Author" />
+                                <CheckBox layoutX="436.0" layoutY="14.0" mnemonicParsing="false" text="Is Book Currently Out On Loan?" />
+                                <Button layoutX="500.0" layoutY="234.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Cancel" />
+                                <Button layoutX="374.0" layoutY="234.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Add Book" />
+                                <ComboBox layoutX="14.0" layoutY="121.0" prefHeight="25.0" prefWidth="287.0" promptText="Genre" />
+                                <Label layoutX="14.0" layoutY="6.0" text="Please enter the details about the Book below:" />
+                                <TextField layoutX="337.0" layoutY="36.0" prefHeight="25.0" prefWidth="287.0" promptText="Who Is Loaning The Book?" />
+                                <DatePicker layoutX="337.0" layoutY="66.0" prefHeight="25.0" prefWidth="287.0" promptText="Please Select The Date The Book Was Loaned" />
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

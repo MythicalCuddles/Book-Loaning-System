@@ -38,6 +38,8 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private void btnAddNewBookOnAction(ActionEvent e) throws Exception {
+        Program p = new Program();
+        p.loadFXML("FXMLs/AddBook.fxml", "Add Book", false);
     }
 
     @FXML

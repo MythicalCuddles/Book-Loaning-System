@@ -15,16 +15,19 @@
         <menus>
             <Menu mnemonicParsing="false" text="File">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Change User" />
-                    <SeparatorMenuItem mnemonicParsing="false" />
-                    <MenuItem mnemonicParsing="false" text="Log Out" />
-                    <MenuItem mnemonicParsing="false" text="Quit" />
+                    <MenuItem fx:id="miFileQuit" mnemonicParsing="false" text="Quit" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+                <items>
+                    <MenuItem fx:id="miEditImport" mnemonicParsing="false" text="Import Books from File" />
+                    <MenuItem fx:id="miEditExport" mnemonicParsing="false" text="Export Books to File" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                    <MenuItem mnemonicParsing="false" text="Help" />
+                    <MenuItem fx:id="miHelpAbout" mnemonicParsing="false" text="About" />
+                    <MenuItem fx:id="miHelpHelp" mnemonicParsing="false" text="Help" />
                 </items>
             </Menu>
         </menus>
