@@ -37,19 +37,19 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                             <children>
                                 <Label layoutX="205.0" layoutY="6.0" text="Which type of Book would you like to add?" />
-                                <Button layoutX="190.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Fiction" />
-                                <Button layoutX="324.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Non-Fiction" />
+                                <Button onAction="#btnFictionOnAction" layoutX="190.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Fiction" />
+                                <Button onAction="#btnNonFictionOnAction" layoutX="324.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Non-Fiction" />
                             </children>
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="246.0" prefWidth="638.0">
                             <children>
-                                <TextField disable="true" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="287.0" promptText="ID" />
-                                <TextField layoutX="14.0" layoutY="61.0" prefHeight="25.0" prefWidth="287.0" promptText="Book Title" />
+                                <TextField fx:id="tfID" disable="true" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="287.0" promptText="ID" />
+                                <TextField fx:id="tfBookTitle" layoutX="14.0" layoutY="61.0" prefHeight="25.0" prefWidth="287.0" promptText="Book Title" />
                                 <TextField layoutX="14.0" layoutY="91.0" prefHeight="25.0" prefWidth="287.0" promptText="Book Author" />
                                 <CheckBox layoutX="436.0" layoutY="14.0" mnemonicParsing="false" text="Is Book Currently Out On Loan?" />
-                                <Button layoutX="500.0" layoutY="234.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Cancel" />
-                                <Button layoutX="374.0" layoutY="234.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Add Book" />
-                                <ComboBox layoutX="14.0" layoutY="121.0" prefHeight="25.0" prefWidth="287.0" promptText="Genre" />
+                                <Button fx:id="btnCancel" onAction="#btnCancelOnAction" layoutX="500.0" layoutY="234.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Cancel" />
+                                <Button onAction="#btnAddBookOnAction" layoutX="374.0" layoutY="234.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Add Book" />
+                                <ComboBox fx:id="cbGenre" layoutX="14.0" layoutY="121.0" prefHeight="25.0" prefWidth="287.0" promptText="Genre" />
                                 <Label layoutX="14.0" layoutY="6.0" text="Please enter the details about the Book below:" />
                                 <TextField layoutX="337.0" layoutY="36.0" prefHeight="25.0" prefWidth="287.0" promptText="Who Is Loaning The Book?" />
                                 <DatePicker layoutX="337.0" layoutY="66.0" prefHeight="25.0" prefWidth="287.0" promptText="Please Select The Date The Book Was Loaned" />

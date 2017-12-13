@@ -28,7 +28,7 @@ public class Program extends Application {
         launch(args);
     }
 
-    private static void setUpBooks()
+    private static void setUpBooks() // TODO: REMOVE
     {
         Book.fictionArrayList.add(new Fiction("The Lord of the Rings", "J. R. R. Tolkien", TypeOfFiction.FANTASY));
         Book.fictionArrayList.add(new Fiction("The Name of the Wind", "Patrick Rothfuss", TypeOfFiction.FANTASY));
