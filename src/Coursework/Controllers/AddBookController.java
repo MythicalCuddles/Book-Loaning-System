@@ -80,12 +80,19 @@ public class AddBookController implements Initializable {
             return;
         }
 
-        if(selectedFiction) {
-            Book.fictionArrayList.add(new Fiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfFiction) cbGenre.getSelectionModel().getSelectedItem()));
+        if(cbOutOnLoan.isSelected()) {
+            if(selectedFiction) {
+                Book.fictionArrayList.add(new Fiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfFiction) cbGenre.getSelectionModel().getSelectedItem(), true, tfLoanHolder.getText(), dpDateOfLoan.getValue()));
+            } else {
+                Book.nonFictionArrayList.add(new NonFiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfNonFiction) cbGenre.getSelectionModel().getSelectedItem(), true, tfLoanHolder.getText(), dpDateOfLoan.getValue()));
+            }
         } else {
-            Book.nonFictionArrayList.add(new NonFiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfNonFiction) cbGenre.getSelectionModel().getSelectedItem()));
+            if(selectedFiction) {
+                Book.fictionArrayList.add(new Fiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfFiction) cbGenre.getSelectionModel().getSelectedItem()));
+            } else {
+                Book.nonFictionArrayList.add(new NonFiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfNonFiction) cbGenre.getSelectionModel().getSelectedItem()));
+            }
         }
-        System.out.println("Added.");
     }
 
     @FXML
