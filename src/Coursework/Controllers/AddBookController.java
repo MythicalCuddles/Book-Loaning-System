@@ -64,7 +64,7 @@ public class AddBookController implements Initializable {
     }
 
     @FXML
-    private void btnAddBookOnAction(ActionEvent e) {
+    private void btnAddBookOnAction(ActionEvent e) throws Exception {
         if(tfBookTitle.getText().isEmpty()) {
             System.out.println("Unable to add book - Title is empty");
             return;
@@ -81,6 +81,11 @@ public class AddBookController implements Initializable {
         }
 
         if(cbOutOnLoan.isSelected()) {
+            if(tfLoanHolder.getText().isEmpty()) {
+                System.out.println("Unable to add book - Loan Holder is empty");
+                return;
+            }
+
             if(selectedFiction) {
                 Book.fictionArrayList.add(new Fiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfFiction) cbGenre.getSelectionModel().getSelectedItem(), true, tfLoanHolder.getText(), dpDateOfLoan.getValue()));
             } else {
@@ -93,6 +98,11 @@ public class AddBookController implements Initializable {
                 Book.nonFictionArrayList.add(new NonFiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfNonFiction) cbGenre.getSelectionModel().getSelectedItem()));
             }
         }
+
+        System.out.println("Book Added.");
+        AlertDialogController ad = new AlertDialogController();
+        ad.loadAlertDialog("Book was successfully added.", "Action Successful");
+        btnCancelOnAction(null);
     }
 
     @FXML

@@ -60,7 +60,7 @@ public class Book {
     // Override Methods
     @Override
     public String toString() {
-        return "Book ID: " + id + "\n[BOOK]\nBook Title: " + title + "\nBook Author: " + author  +
+        return "[BOOK]\nBook ID: " + id + "\nBook Title: " + title + "\nBook Author: " + author  +
                 "\nOn Loan? " + BooleanWorker.toYesNo(outOnLoan) + "\nLoan Holder: " + loanHolder + "\nDate of Loan: " + dateOfLoan;
     }
 }

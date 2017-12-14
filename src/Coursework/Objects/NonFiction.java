@@ -27,7 +27,7 @@ public class NonFiction extends Book {
     // Override Methods
     @Override
     public String toString() {
-        return "Book ID: " + super.getId() + "\n[NON-FICTION]\nBook Title: " + super.getTitle() + "\nBook Author: " + super.getAuthor()  +
+        return "[NON-FICTION]\nBook ID: " + super.getId() + "\nBook Title: " + super.getTitle() + "\nBook Author: " + super.getAuthor()  +
                 "\nOn Loan? " + BooleanWorker.toYesNo(super.isOutOnLoan()) + "\nLoan Holder: " + super.getLoanHolder() + "\nDate of Loan: " + super.getDateOfLoan() +
                 "\nBook Genre: " + genre.toString();
     }
