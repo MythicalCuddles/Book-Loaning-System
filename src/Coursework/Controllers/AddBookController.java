@@ -77,6 +77,7 @@ public class AddBookController implements Initializable {
 
         if(cbGenre.getSelectionModel().getSelectedIndex() < 0) {
             System.out.println("Unable to add book - Genre is not selected");
+            return;
         }
 
         if(selectedFiction) {
