@@ -63,8 +63,8 @@
                                 </Menu>
                             </items>
                         </SplitMenuButton>
-                        <Button fx:id="btnDisplayNonFiction1" layoutX="109.0" layoutY="296.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Search" />
-                        <Button layoutX="15.0" layoutY="512.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Loan Book" />
+                        <Button onAction="#btnSearchOnAction" layoutX="109.0" layoutY="296.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Search" />
+                        <Button onAction="#btnLoanBookOnAction" layoutX="15.0" layoutY="512.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Loan Book" />
                         <Line endX="100.0" layoutX="100.0" layoutY="470.0" startX="-100.0" />
                         <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="478.0" style="&#10;" text="Options" textAlignment="CENTER" wrapText="false" />
                         <TextField layoutX="16.0" layoutY="176.0" prefHeight="25.0" prefWidth="170.0" promptText="ID" />

@@ -1,7 +1,9 @@
 package Coursework.Objects;
 
+import Coursework.Extensions.BooleanWorker;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Book {
     /// Instance Variables
@@ -11,7 +13,7 @@ public class Book {
     // Loan Variables
     private boolean outOnLoan;
     private String loanHolder;
-    private Date dateOfLoan;
+    private LocalDate dateOfLoan;
 
     /// Class Variables
     private static int noOfBooks;
@@ -21,7 +23,7 @@ public class Book {
     // Constructors
     public Book() { this(null, null); }
     public Book(String title, String author) { this(title, author, false, null, null); }
-    public Book(String title, String author, boolean outOnLoan, String loanHolder, Date dateOfLoan) {
+    public Book(String title, String author, boolean outOnLoan, String loanHolder, LocalDate dateOfLoan) {
         this.id = this.getNoOfBooks();
         this.title = title;
         this.author = author;
@@ -39,7 +41,7 @@ public class Book {
     public String getAuthor() { return this.author; }
     public boolean isOutOnLoan() { return this.outOnLoan; }
     public String getLoanHolder() { return this.loanHolder; }
-    public Date getDateOfLoan() { return this.dateOfLoan; }
+    public LocalDate getDateOfLoan() { return this.dateOfLoan; }
 
     // Instance Setters
     //public void setId(int id) { this.id = id; }
@@ -47,11 +49,18 @@ public class Book {
     public void setAuthor(String author) { this.author = author; }
     public void setOutOnLoan(boolean outOnLoan) { this.outOnLoan = outOnLoan; }
     public void setLoanHolder(String loanHolder) { this.loanHolder = loanHolder; }
-    public void setDateOfLoan(Date dateOfLoan) { this.dateOfLoan = dateOfLoan; }
+    public void setDateOfLoan(LocalDate dateOfLoan) { this.dateOfLoan = dateOfLoan; }
 
     // Class Getters
     public int getNoOfBooks() { return this.noOfBooks; }
 
     // Class Setters
     public void setNoOfBooks(int noOfBooks) { this.noOfBooks = noOfBooks; }
+
+    // Override Methods
+    @Override
+    public String toString() {
+        return "Book ID: " + id + "\n[BOOK]\nBook Title: " + title + "\nBook Author: " + author  +
+                "\nOn Loan? " + BooleanWorker.toYesNo(outOnLoan) + "\nLoan Holder: " + loanHolder + "\nDate of Loan: " + dateOfLoan;
+    }
 }

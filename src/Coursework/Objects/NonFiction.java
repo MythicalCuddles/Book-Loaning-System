@@ -1,8 +1,9 @@
 package Coursework.Objects;
 
 import Coursework.Enums.TypeOfNonFiction;
+import Coursework.Extensions.BooleanWorker;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class NonFiction extends Book {
     // Instance Variables
@@ -11,15 +12,10 @@ public class NonFiction extends Book {
     // Constructors
     public NonFiction() { this(null, null, null); }
     public NonFiction(String title, String author, TypeOfNonFiction genre) { this(title, author, genre, false, null, null); }
-    public NonFiction(String title, String author, TypeOfNonFiction genre, boolean outOnLoan, String loanHolder, Date dateOfLoan) {
-        super.setTitle(title);
-        super.setAuthor(author);
+    public NonFiction(String title, String author, TypeOfNonFiction genre, boolean outOnLoan, String loanHolder, LocalDate dateOfLoan) {
+        super(title, author, outOnLoan, loanHolder, dateOfLoan);
 
         this.genre = genre;
-
-        super.setOutOnLoan(outOnLoan);
-        super.setLoanHolder(loanHolder);
-        super.setDateOfLoan(dateOfLoan);
     }
 
     // Instance Getters
@@ -27,4 +23,12 @@ public class NonFiction extends Book {
 
     // Instance Setters
     public void setGenre(TypeOfNonFiction genre) { this.genre = genre; }
+
+    // Override Methods
+    @Override
+    public String toString() {
+        return "Book ID: " + super.getId() + "\n[NON-FICTION]\nBook Title: " + super.getTitle() + "\nBook Author: " + super.getAuthor()  +
+                "\nOn Loan? " + BooleanWorker.toYesNo(super.isOutOnLoan()) + "\nLoan Holder: " + super.getLoanHolder() + "\nDate of Loan: " + super.getDateOfLoan() +
+                "\nBook Genre: " + genre.toString();
+    }
 }
