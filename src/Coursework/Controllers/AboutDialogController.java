@@ -32,7 +32,7 @@ public class AboutDialogController implements Initializable {
                 "for any more information or learning how to set things up.\n\n(Book Loaning System - COM187 - Coursework 3)");
         taDetails.wrapTextProperty().setValue(true);
 
-        ivImage.setImage(new Image("http://scm.ulster.ac.uk/~B00714027/Files/Software%20Development%20II/CW3/aboutbox-.png"));
+        ivImage.setImage(new Image("http://scm.ulster.ac.uk/~B00714027/Files/Software%20Development%20II/CW3/aboutbox.png"));
     }
 
     @FXML

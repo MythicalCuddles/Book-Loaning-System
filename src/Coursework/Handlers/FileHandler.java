@@ -45,11 +45,8 @@ public class FileHandler {
     }
 
     public static void writeBooksToFile() throws Exception {
-        FileOutputStream fictionStream = new FileOutputStream(FictionBooks),
-                nonFictionStream = new FileOutputStream(NonFictionBooks);
-
-        ObjectOutputStream fictionObjectStream = new ObjectOutputStream(fictionStream),
-                nonFictionObjectStream = new ObjectOutputStream(nonFictionStream);
+        ObjectOutputStream fictionObjectStream = new ObjectOutputStream(new FileOutputStream(FictionBooks)),
+                nonFictionObjectStream = new ObjectOutputStream(new FileOutputStream(NonFictionBooks));
 
         for(Fiction f : Book.fictionArrayList) {
             fictionObjectStream.writeObject(f);
@@ -64,11 +61,8 @@ public class FileHandler {
     }
 
     public static void loadBooksFromSerFile() throws Exception {
-        FileInputStream fictionStream = new FileInputStream(FictionBooks),
-                nonFictionStream = new FileInputStream(NonFictionBooks);
-
-        ObjectInputStream fictionObjectStream = new ObjectInputStream(fictionStream),
-                nonFictionObjectStream = new ObjectInputStream(nonFictionStream);
+        ObjectInputStream fictionObjectStream = new ObjectInputStream(new FileInputStream(FictionBooks)),
+                nonFictionObjectStream = new ObjectInputStream(new FileInputStream(NonFictionBooks));
 
         boolean continueFiction = true, continueNonFiction = true;
 

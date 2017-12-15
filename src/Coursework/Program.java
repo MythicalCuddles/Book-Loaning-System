@@ -22,7 +22,7 @@ public class Program extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        //setUpBooks();
+        setUpBooks();
         FileHandler.ensureExists();
         //FileHandler.loadBooksFromSerFile();
 
