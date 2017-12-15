@@ -24,17 +24,17 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblCopyright" layoutX="159.0" layoutY="56.0" text="Copyright">
+                <Label fx:id="lblAuthor" layoutX="159.0" layoutY="56.0" text="Author">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblCompany" layoutX="159.0" layoutY="77.0" text="Company">
+                <Label fx:id="lblOther" layoutX="159.0" layoutY="77.0" text="Other">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <TextArea editable="false" layoutX="159.0" layoutY="100.0" prefHeight="100.0" prefWidth="325.0" text="Sample text" />
+                <TextArea fx:id="taDetails" editable="false" layoutX="159.0" layoutY="100.0" prefHeight="100.0" prefWidth="325.0" text="Sample text" />
             </children>
         </AnchorPane>
     </children>

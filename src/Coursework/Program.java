@@ -2,6 +2,7 @@ package Coursework;
 
 import Coursework.Enums.TypeOfFiction;
 import Coursework.Enums.TypeOfNonFiction;
+import Coursework.Handlers.FileHandler;
 import Coursework.Objects.Book;
 import Coursework.Objects.Fiction;
 import Coursework.Objects.NonFiction;
@@ -21,7 +22,10 @@ public class Program extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        setUpBooks();
+        //setUpBooks();
+        FileHandler.ensureExists();
+        //FileHandler.loadBooksFromSerFile();
+
         loadFXML("FXMLs/MainMenu.fxml", "Book System", true, false);
     }
     public static void main(String[] args) {

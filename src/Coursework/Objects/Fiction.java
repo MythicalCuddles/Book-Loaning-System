@@ -3,9 +3,10 @@ package Coursework.Objects;
 import Coursework.Enums.TypeOfFiction;
 import Coursework.Extensions.BooleanWorker;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Fiction extends Book{
+public class Fiction extends Book implements Serializable {
     // Instance Variables
     private TypeOfFiction genre;
 

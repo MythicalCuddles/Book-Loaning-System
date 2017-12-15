@@ -1,5 +1,7 @@
 package Coursework.Controllers;
 
+import Coursework.Handlers.DialogBoxHandler;
+import Coursework.Handlers.FileHandler;
 import Coursework.Program;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -15,6 +17,7 @@ import javafx.scene.image.ImageView;
 
 import javafx.event.ActionEvent;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -77,8 +80,9 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    private void miEditExportOnAction(ActionEvent e) {
-
+    private void miEditExportOnAction(ActionEvent e) throws Exception {
+        FileHandler.writeBooksToFile();
+        DialogBoxHandler.ShowMessageDialog("Export Books to File", "Books exported successfully!", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @FXML

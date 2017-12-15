@@ -3,9 +3,10 @@ package Coursework.Objects;
 import Coursework.Enums.TypeOfNonFiction;
 import Coursework.Extensions.BooleanWorker;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class NonFiction extends Book {
+public class NonFiction extends Book implements Serializable {
     // Instance Variables
     private TypeOfNonFiction genre;
 

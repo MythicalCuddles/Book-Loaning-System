@@ -2,10 +2,11 @@ package Coursework.Objects;
 
 import Coursework.Extensions.BooleanWorker;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Book {
+public class Book implements Serializable {
     /// Instance Variables
     // Main Variables
     private int id;

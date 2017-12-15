@@ -9,7 +9,7 @@ You are the teacher of a primary school class and you want to have a system that
 and non-fiction books available for loan (NB: there is only one
 copy of a book available for loan).
 
-? 2) Display the books available for loan
+ 2) Display the books available for loan
 • The system should display the fiction and non-fiction books
 available for loan
 
@@ -32,10 +32,10 @@ available for loan
 Functional Requirements
 Your Java program must have the following:
 
-? • A Book superclass with appropriate properties and methods
+• A Book superclass with appropriate properties and methods
 (including accessor and mutator)
 
-? • A Fiction subclass and a NonFiction subclass - these subclasses
+• A Fiction subclass and a NonFiction subclass - these subclasses
 will extend the Book superclass and have their own properties and
 methods
 
