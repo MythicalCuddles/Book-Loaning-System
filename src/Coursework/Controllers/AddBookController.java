@@ -2,6 +2,7 @@ package Coursework.Controllers;
 
 import Coursework.Enums.TypeOfFiction;
 import Coursework.Enums.TypeOfNonFiction;
+import Coursework.Handlers.DialogBoxHandler;
 import Coursework.Objects.Book;
 import Coursework.Objects.Fiction;
 import Coursework.Objects.NonFiction;
@@ -13,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -66,23 +68,23 @@ public class AddBookController implements Initializable {
     @FXML
     private void btnAddBookOnAction(ActionEvent e) throws Exception {
         if(tfBookTitle.getText().isEmpty()) {
-            System.out.println("Unable to add book - Title is empty");
+            DialogBoxHandler.ShowMessageDialog("Warning!", "Please enter the Title of the book.", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         if(tfBookAuthor.getText().isEmpty()) {
-            System.out.println("Unable to add book - Author is empty");
+            DialogBoxHandler.ShowMessageDialog("Warning!", "Please enter the Author of the book.", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         if(cbGenre.getSelectionModel().getSelectedIndex() < 0) {
-            System.out.println("Unable to add book - Genre is not selected");
+            DialogBoxHandler.ShowMessageDialog("Warning!", "Please select a genre from the list.", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         if(cbOutOnLoan.isSelected()) {
             if(tfLoanHolder.getText().isEmpty()) {
-                System.out.println("Unable to add book - Loan Holder is empty");
+                DialogBoxHandler.ShowMessageDialog("Warning!", "You have stated that this book is currently out on loan. Please specify who it is out on loan to.", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -99,9 +101,7 @@ public class AddBookController implements Initializable {
             }
         }
 
-        System.out.println("Book Added.");
-        AlertDialogController ad = new AlertDialogController();
-        ad.loadAlertDialog("Book was successfully added.", "Action Successful");
+        DialogBoxHandler.ShowMessageDialog("Action Successful","Your book (" + tfBookTitle.getText() + ") has been added successfully.", JOptionPane.INFORMATION_MESSAGE);
         btnCancelOnAction(null);
     }
 

@@ -22,7 +22,7 @@ public class Program extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         setUpBooks();
-        loadFXML("FXMLs/MainMenu.fxml", "Book System", true);
+        loadFXML("FXMLs/MainMenu.fxml", "Book System", true, false);
     }
     public static void main(String[] args) {
         launch(args);
@@ -63,7 +63,7 @@ public class Program extends Application {
         Book.nonFictionArrayList.add(new NonFiction("Book 3", "Melissa Brennan", TypeOfNonFiction.DECOR));
     }
 
-    public void loadFXML(String resource, String title, boolean closeAllOnClose) throws Exception {
+    public void loadFXML(String resource, String title, boolean closeAllOnClose, boolean alwaysOnTop) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource(resource));
 
         Scene scene = new Scene(root);
@@ -73,6 +73,7 @@ public class Program extends Application {
         stage.setTitle(title);
         stage.setResizable(false);
         stage.getIcons().add(iconLogo);
+        stage.setAlwaysOnTop(alwaysOnTop);
 
         if(closeAllOnClose)
             stage.setOnCloseRequest(e -> {

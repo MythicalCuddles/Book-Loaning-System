@@ -39,13 +39,13 @@ public class MainMenuController implements Initializable {
     @FXML
     private void btnAddNewBookOnAction(ActionEvent e) throws Exception {
         Program p = new Program();
-        p.loadFXML("FXMLs/AddBook.fxml", "Add Book", false);
+        p.loadFXML("FXMLs/AddBook.fxml", "Add Book", false, true);
     }
 
     @FXML
     private void btnDisplayAvailableBooksOnAction(ActionEvent e) throws Exception {
         Program p = new Program();
-        p.loadFXML("FXMLs/DisplayAvailableBooks.fxml", "Display Available Books", false);
+        p.loadFXML("FXMLs/DisplayAvailableBooks.fxml", "Display Available Books", false, true);
     }
 
     @FXML
