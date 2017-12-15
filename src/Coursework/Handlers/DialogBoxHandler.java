@@ -18,4 +18,11 @@ public class DialogBoxHandler {
         frame.setAlwaysOnTop(true);
         JOptionPane.showMessageDialog(frame, message, title, typeOfDialog);
     }
+
+    public static int ShowConfirmationDialog(String title, String message, int typeOfDialog) {
+        JFrame frame = new JFrame(title);
+        frame.setAlwaysOnTop(true);
+        int option = JOptionPane.showConfirmDialog(frame, message, title, typeOfDialog);
+        return option;
+    }
 }
