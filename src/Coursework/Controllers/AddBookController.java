@@ -36,8 +36,8 @@ public class AddBookController implements Initializable {
         cbGenre.setPromptText("Please select Fiction/Non-Fiction");
         tfID.setText((Book.fictionArrayList.size() + Book.nonFictionArrayList.size()) + "");
 
-        LocalDate localDate = LocalDate.now();
-        dpDateOfLoan.setValue(localDate);
+        //LocalDate localDate = LocalDate.now();
+        dpDateOfLoan.setValue(LocalDate.now());
 
         dpDateOfLoan.setDisable(true);
         tfLoanHolder.setDisable(true);

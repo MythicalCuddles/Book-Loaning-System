@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 public class MainMenuController implements Initializable {
     @FXML ImageView ivLogoImage;
     @FXML Button btnAddBook, btnDisplayBooks, btnDisplayLoans, btnQuit;
+    @FXML Label lblLeftStatus, lblRightStatus;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -34,6 +35,9 @@ public class MainMenuController implements Initializable {
         btnDisplayBooks.setGraphic(new ImageView("http://scm.ulster.ac.uk/~B00714027/Files/Software%20Development%20II/CW3/searchbooks.png"));
         btnDisplayLoans.setGraphic(new ImageView("http://scm.ulster.ac.uk/~B00714027/Files/Software%20Development%20II/CW3/loanbook.png"));
         btnQuit.setGraphic(new ImageView("http://scm.ulster.ac.uk/~B00714027/Files/Software%20Development%20II/CW3/exit.png"));
+
+        lblLeftStatus.setText("");
+        lblRightStatus.setText("Developed by Melissa Brennan (B00714027)");
     }
 
     @FXML
