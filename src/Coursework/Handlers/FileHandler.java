@@ -109,11 +109,10 @@ public class FileHandler {
             ObjectInputStream fictionObjectStream = new ObjectInputStream(new FileInputStream(file));
 
             try {
-                Object fictionObject = null;
+                Fiction fictionObject = null;
                 do {
-                    fictionObject = fictionObjectStream.readObject();
-                    Book.fictionArrayList.add((Fiction)fictionObject);
-                    Book.addNoOfBooks(1);
+                    fictionObject = (Fiction) fictionObjectStream.readObject();
+                    Book.fictionArrayList.add(new Fiction(fictionObject.getTitle(), fictionObject.getAuthor(), fictionObject.getGenre(), fictionObject.isOutOnLoan(), fictionObject.getLoanHolder(), fictionObject.getDateOfLoan()));
                 } while(fictionObject != null);
             } catch(Exception e) {
                 // Do Nothing - Error will be thrown when all objects read and attempting to continue to read.
@@ -128,11 +127,10 @@ public class FileHandler {
             ObjectInputStream nonFictionObjectStream = new ObjectInputStream(new FileInputStream(file));
 
             try {
-                Object nonFictionObject = null;
+                NonFiction nonFictionObject = null;
                 do {
-                    nonFictionObject = nonFictionObjectStream.readObject();
-                    Book.nonFictionArrayList.add((NonFiction) nonFictionObject);
-                    Book.addNoOfBooks(1);
+                    nonFictionObject = (NonFiction)nonFictionObjectStream.readObject();
+                    Book.nonFictionArrayList.add(new NonFiction(nonFictionObject.getTitle(), nonFictionObject.getAuthor(), nonFictionObject.getGenre(), nonFictionObject.isOutOnLoan(), nonFictionObject.getLoanHolder(), nonFictionObject.getDateOfLoan()));
                 } while(nonFictionObject != null);
             } catch(Exception e) {
                 // Do Nothing - Error will be thrown when all objects read and attempting to continue to read.
