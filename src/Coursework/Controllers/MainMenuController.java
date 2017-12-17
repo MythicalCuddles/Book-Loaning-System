@@ -28,14 +28,14 @@ import java.util.ResourceBundle;
  File Name:         MainMenuController
  Created by: 		Melissa Brennan
  Student No:        B00714027
- Comments:          Controller for FXMLs/MainMenu.fxml
+ Comments:          Controller for FXMLS/MainMenu.fxml
  ******************************************************/
 
 public class MainMenuController implements Initializable {
     @FXML ImageView ivLogoImage;
     @FXML Button btnAddBook, btnDisplayBooks, btnDisplayLoans, btnQuit;
     @FXML Label lblLeftStatus, lblRightStatus;
-    @FXML MenuItem miFileQuit, miEditImport, miEditExport, miHelpAbout, miHelpHelp;
+    @FXML MenuItem miFileQuit, miEditImport, miEditExport, miHelpAbout;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -56,19 +56,19 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    private void btnAddNewBookOnAction(ActionEvent e) {
+    private void btnAddNewBookOnAction(ActionEvent e) throws Exception {
         Program p = new Program();
         p.loadFXML("FXMLs/AddBook.fxml", "Add Book", false, true);
     }
 
     @FXML
-    private void btnDisplayAvailableBooksOnAction(ActionEvent e) {
+    private void btnDisplayAvailableBooksOnAction(ActionEvent e) throws Exception {
         Program p = new Program();
         p.loadFXML("FXMLs/DisplayAvailableBooks.fxml", "Display Available Books", false, true);
     }
 
     @FXML
-    private void btnDisplayBooksOnLoanOnAction(ActionEvent e) {
+    private void btnDisplayBooksOnLoanOnAction(ActionEvent e) throws Exception {
         Program p = new Program();
         p.loadFXML("FXMLs/DisplayBooksOnLoan.fxml", "Display Books on Loan", false, true);
     }
@@ -90,13 +90,13 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    private void miEditExportOnAction(ActionEvent e) {
+    private void miEditExportOnAction(ActionEvent e) throws Exception {
         FileHandler.writeBooksToFile();
         DialogBoxHandler.ShowMessageDialog("Export Books to File", "Books exported successfully!", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @FXML
-    private void miHelpAboutOnAction(ActionEvent e) {
+    private void miHelpAboutOnAction(ActionEvent e) throws Exception {
         Program p = new Program();
         p.loadFXML("FXMLs/AboutDialog.fxml", "About Book Loaning System", false, true);
     }

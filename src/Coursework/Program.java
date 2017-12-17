@@ -34,14 +34,14 @@ import java.util.ArrayList;
  ******************************************************/
 
 public class Program extends Application {
-    private static Image iconLogo = new Image("Resources/books.png");
+    private static Image iconLogo = new Image("http://scm.ulster.ac.uk/~B00714027/Files/Software%20Development%20II/CW3/books.png");
 
     @Override
     public void start(Stage stage) {
         FileHandler.ensureExistsAndLoad(); // Checks to see if the book files exist.
         System.out.println("[DEBUG] " + Book.getNoOfBooks() + " Books Loaded From File."); // Console info for debugging
 
-        loadFXML("FXMLs/MainMenu.fxml", "Book System", true, false); // Calls method below to load MainMenu FXML
+        loadFXML("FXMLs/MainMenu.fxml", "Book Loaning System", true, false); // Calls method below to load MainMenu FXML
     }
     public static void main(String[] args) { // Entry point for the Program.
         launch(args); // Calls the Override for the main method in JavaFX.
