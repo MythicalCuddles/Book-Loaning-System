@@ -2,6 +2,7 @@ package Coursework.Controllers;
 
 import Coursework.Enums.TypeOfFiction;
 import Coursework.Enums.TypeOfNonFiction;
+import Coursework.Extensions.ArrayListWorker;
 import Coursework.Handlers.DialogBoxHandler;
 import Coursework.Handlers.FileHandler;
 import Coursework.Objects.Book;
@@ -97,23 +98,25 @@ public class AddBookController implements Initializable {
                 DialogBoxHandler.ShowMessageDialog("Warning!", "You have stated that this book is currently out on loan. Please specify who it is out on loan to.", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-
-            if(selectedFiction) {
-                Book.fictionArrayList.add(new Fiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfFiction) cbGenre.getSelectionModel().getSelectedItem(), true, tfLoanHolder.getText(), dpDateOfLoan.getValue()));
-            } else {
-                Book.nonFictionArrayList.add(new NonFiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfNonFiction) cbGenre.getSelectionModel().getSelectedItem(), true, tfLoanHolder.getText(), dpDateOfLoan.getValue()));
-            }
-        } else {
-            if(selectedFiction) {
-                Book.fictionArrayList.add(new Fiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfFiction) cbGenre.getSelectionModel().getSelectedItem()));
-            } else {
-                Book.nonFictionArrayList.add(new NonFiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfNonFiction) cbGenre.getSelectionModel().getSelectedItem()));
-            }
         }
 
-        FileHandler.writeBooksToFile(); // Save the books to file.
-        DialogBoxHandler.ShowMessageDialog("Action Successful","Your book (" + tfBookTitle.getText() + ") has been added successfully.", JOptionPane.INFORMATION_MESSAGE);
-        btnCancelOnAction(null);
+        if(selectedFiction) {
+            if(!ArrayListWorker.doesListContainBook(Book.fictionArrayList, tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfFiction) cbGenre.getSelectionModel().getSelectedItem())) {
+                Book.fictionArrayList.add(new Fiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfFiction) cbGenre.getSelectionModel().getSelectedItem(), cbOutOnLoan.isSelected(), tfLoanHolder.getText(), dpDateOfLoan.getValue()));
+
+                FileHandler.writeBooksToFile(); // Save the books to file.
+                DialogBoxHandler.ShowMessageDialog("Action Successful","Your book (" + tfBookTitle.getText() + ") has been added successfully.", JOptionPane.INFORMATION_MESSAGE);
+                btnCancelOnAction(null);
+            } else {
+                DialogBoxHandler.ShowMessageDialog("Info", "Book already exists in the list.", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else {
+            if(!ArrayListWorker.doesListContainBook(Book.nonFictionArrayList, tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfNonFiction) cbGenre.getSelectionModel().getSelectedItem())) {
+                Book.nonFictionArrayList.add(new NonFiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfNonFiction) cbGenre.getSelectionModel().getSelectedItem(), cbOutOnLoan.isSelected(), tfLoanHolder.getText(), dpDateOfLoan.getValue()));
+            } else {
+                DialogBoxHandler.ShowMessageDialog("Info", "Book already exists in the list.", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }
 
     @FXML

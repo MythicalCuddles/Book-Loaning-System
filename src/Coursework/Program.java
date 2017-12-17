@@ -76,12 +76,15 @@ public class Program extends Application {
 
     public static void exitProgram() { // Method to check if the user wants to exit the program.
         int option = DialogBoxHandler.ShowConfirmationDialog("About to Quit", "Are you sure you want to exit the program?", JOptionPane.YES_NO_OPTION); // Ask the user if they are sure they want to quit.
+        System.out.println(option);
         // OPTION = 0 (Yes was clicked) // OPTION = -1 (X was clicked) // OPTION = 1 (No was clicked)
         if(option == 0) {
             FileHandler.writeBooksToFile(); // Save the books to file.
             // Call methods to Exit the Program.
             Platform.exit();
             System.exit(0);
-        }
+        } else { return; }
+
+        return;
     }
 }

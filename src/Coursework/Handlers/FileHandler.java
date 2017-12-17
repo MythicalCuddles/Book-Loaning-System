@@ -1,5 +1,8 @@
 package Coursework.Handlers;
 
+import Coursework.Enums.TypeOfFiction;
+import Coursework.Enums.TypeOfNonFiction;
+import Coursework.Extensions.ArrayListWorker;
 import Coursework.Objects.Book;
 import Coursework.Objects.Fiction;
 import Coursework.Objects.NonFiction;
@@ -112,7 +115,11 @@ public class FileHandler {
                 Fiction fictionObject = null;
                 do {
                     fictionObject = (Fiction) fictionObjectStream.readObject();
-                    Book.fictionArrayList.add(new Fiction(fictionObject.getTitle(), fictionObject.getAuthor(), fictionObject.getGenre(), fictionObject.isOutOnLoan(), fictionObject.getLoanHolder(), fictionObject.getDateOfLoan()));
+                    if(!ArrayListWorker.doesListContainBook(Book.fictionArrayList, fictionObject.getTitle(), fictionObject.getAuthor(), (TypeOfFiction) fictionObject.getGenre())) {
+                        Book.fictionArrayList.add(new Fiction(fictionObject.getTitle(), fictionObject.getAuthor(), fictionObject.getGenre(), fictionObject.isOutOnLoan(), fictionObject.getLoanHolder(), fictionObject.getDateOfLoan()));
+                    } else {
+                        System.out.println("[Warning] The Book - " + fictionObject.getTitle() + " by " + fictionObject.getAuthor() + " - already exists in the program.");
+                    }
                 } while(fictionObject != null);
             } catch(Exception e) {
                 // Do Nothing - Error will be thrown when all objects read and attempting to continue to read.
@@ -130,7 +137,11 @@ public class FileHandler {
                 NonFiction nonFictionObject = null;
                 do {
                     nonFictionObject = (NonFiction)nonFictionObjectStream.readObject();
-                    Book.nonFictionArrayList.add(new NonFiction(nonFictionObject.getTitle(), nonFictionObject.getAuthor(), nonFictionObject.getGenre(), nonFictionObject.isOutOnLoan(), nonFictionObject.getLoanHolder(), nonFictionObject.getDateOfLoan()));
+                    if(!ArrayListWorker.doesListContainBook(Book.nonFictionArrayList, nonFictionObject.getTitle(), nonFictionObject.getAuthor(), (TypeOfNonFiction) nonFictionObject.getGenre())) {
+                        Book.nonFictionArrayList.add(new NonFiction(nonFictionObject.getTitle(), nonFictionObject.getAuthor(), nonFictionObject.getGenre(), nonFictionObject.isOutOnLoan(), nonFictionObject.getLoanHolder(), nonFictionObject.getDateOfLoan()));
+                    } else {
+                        System.out.println("[Warning] The Book - " + nonFictionObject.getTitle() + " by " + nonFictionObject.getAuthor() + " - already exists in the program.");
+                    }
                 } while(nonFictionObject != null);
             } catch(Exception e) {
                 // Do Nothing - Error will be thrown when all objects read and attempting to continue to read.

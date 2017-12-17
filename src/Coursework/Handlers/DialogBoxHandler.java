@@ -30,6 +30,7 @@ public class DialogBoxHandler {
     public static int ShowConfirmationDialog(String title, String message, int typeOfDialog) {
         JFrame frame = new JFrame(title);
         frame.setAlwaysOnTop(true);
-        return JOptionPane.showConfirmDialog(frame, message, title, typeOfDialog);
+        int option = JOptionPane.showConfirmDialog(frame, message, title, typeOfDialog);
+        return option;
     }
 }
