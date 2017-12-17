@@ -50,6 +50,7 @@ public class DisplayBooksOnLoanController implements Initializable {
         tvBookTable.setPlaceholder(new Label("There are no available books out on loan."));
         FillTableWithAll();
 
+        cbGenre.getItems().add("- Any -");
         cbGenre.getItems().add("- Fiction -");
         cbGenre.getItems().addAll(TypeOfFiction.values());
         cbGenre.getItems().add("- Non-Fiction -");
@@ -199,10 +200,10 @@ public class DisplayBooksOnLoanController implements Initializable {
 
         for(Fiction b : Book.fictionArrayList) {
             if(meetSearchCriteria(b, searchID, searchTitle, searchAuthor)) {
-                if(cbGenre.getSelectionModel().getSelectedIndex() == 0) {
+                if(cbGenre.getSelectionModel().getSelectedIndex() == 1) {
                     books.add(b);
                 }
-                else if(cbGenre.getSelectionModel().getSelectedIndex() < 0 || b.getGenre() == cbGenre.getSelectionModel().getSelectedItem()) {
+                else if(cbGenre.getSelectionModel().getSelectedIndex() <= 0 || b.getGenre() == cbGenre.getSelectionModel().getSelectedItem()) {
                     books.add(b);
                 }
             }
@@ -210,10 +211,10 @@ public class DisplayBooksOnLoanController implements Initializable {
 
         for(NonFiction b : Book.nonFictionArrayList) {
             if(meetSearchCriteria(b, searchID, searchTitle, searchAuthor)) {
-                if(cbGenre.getSelectionModel().getSelectedIndex() == 8) {
+                if(cbGenre.getSelectionModel().getSelectedIndex() == 9) {
                     books.add(b);
                 }
-                else if(cbGenre.getSelectionModel().getSelectedIndex() < 0 || b.getGenre() == cbGenre.getSelectionModel().getSelectedItem()) {
+                else if(cbGenre.getSelectionModel().getSelectedIndex() <= 0 || b.getGenre() == cbGenre.getSelectionModel().getSelectedItem()) {
                     books.add(b);
                 }
             }
