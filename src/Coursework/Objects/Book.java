@@ -6,6 +6,14 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/*****************************************************
+ Project Name:      B00714027 CW3
+ File Name:         Book
+ Created by: 		Melissa Brennan
+ Student No:        B00714027
+ Comments:          Superclass which is used for Fiction and NonFiction
+ ******************************************************/
+
 public class Book implements Serializable {
     /// Instance Variables
     // Main Variables
@@ -25,7 +33,7 @@ public class Book implements Serializable {
     public Book() { this(null, null); }
     public Book(String title, String author) { this(title, author, false, null, null); }
     public Book(String title, String author, boolean outOnLoan, String loanHolder, LocalDate dateOfLoan) {
-        this.id = this.getNoOfBooks();
+        this.id = getNoOfBooks();
         this.title = title;
         this.author = author;
 
@@ -53,10 +61,11 @@ public class Book implements Serializable {
     public void setDateOfLoan(LocalDate dateOfLoan) { this.dateOfLoan = dateOfLoan; }
 
     // Class Getters
-    public int getNoOfBooks() { return this.noOfBooks; }
+    public static int getNoOfBooks() { return noOfBooks; }
 
     // Class Setters
-    public void setNoOfBooks(int noOfBooks) { this.noOfBooks = noOfBooks; }
+    public static void setNoOfBooks(int numberOfBooks) { noOfBooks = numberOfBooks; }
+    public static void addNoOfBooks(int booksToAdd) { noOfBooks += booksToAdd; }
 
     // Override Methods
     @Override

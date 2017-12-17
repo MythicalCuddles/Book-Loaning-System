@@ -2,6 +2,14 @@ package Coursework.Handlers;
 
 import javax.swing.*;
 
+/*****************************************************
+ Project Name:      B00714027 CW3
+ File Name:         DialogBoxHandler
+ Created by: 		Melissa Brennan
+ Student No:        B00714027
+ Comments:          Class of methods to handle Dialog Boxes
+ ******************************************************/
+
 public class DialogBoxHandler {
 
     public static String ShowInputDialog(String title, String message, int typeOfDialog)
@@ -22,7 +30,6 @@ public class DialogBoxHandler {
     public static int ShowConfirmationDialog(String title, String message, int typeOfDialog) {
         JFrame frame = new JFrame(title);
         frame.setAlwaysOnTop(true);
-        int option = JOptionPane.showConfirmDialog(frame, message, title, typeOfDialog);
-        return option;
+        return JOptionPane.showConfirmDialog(frame, message, title, typeOfDialog);
     }
 }

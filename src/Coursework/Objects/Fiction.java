@@ -6,6 +6,14 @@ import Coursework.Extensions.BooleanWorker;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+/*****************************************************
+ Project Name:      B00714027 CW3
+ File Name:         Fiction
+ Created by: 		Melissa Brennan
+ Student No:        B00714027
+ Comments:          Subclass of Superclass Book
+ ******************************************************/
+
 public class Fiction extends Book implements Serializable {
     // Instance Variables
     private TypeOfFiction genre;

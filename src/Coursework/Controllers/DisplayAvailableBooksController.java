@@ -3,10 +3,13 @@ package Coursework.Controllers;
 import Coursework.Enums.TypeOfFiction;
 import Coursework.Enums.TypeOfNonFiction;
 import Coursework.Extensions.ArrayListWorker;
+import Coursework.Extensions.StringWorker;
 import Coursework.Handlers.DialogBoxHandler;
+import Coursework.Handlers.FileHandler;
 import Coursework.Objects.Book;
 import Coursework.Objects.NonFiction;
 import Coursework.Objects.Fiction;
+import Coursework.Program;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,16 +28,24 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
+/*****************************************************
+ Project Name:      B00714027 CW3
+ File Name:         DisplayAvailableBooksController
+ Created by: 		Melissa Brennan
+ Student No:        B00714027
+ Comments:          Controller for FXMLs/DisplayAvailableBooks.fxml
+ ******************************************************/
+
 public class DisplayAvailableBooksController implements Initializable{
     @FXML TableView tvBookTable;
     @FXML TableColumn<Object, String> tcBookId, tcBookTitle, tcBookAuthor, tcBookGenre;
     @FXML TextField tfSearchID, tfSearchTitle, tfSearchAuthor;
     @FXML ComboBox cbGenre;
     @FXML Button btnDisplayFiction, btnDisplayNonFiction;
-    String defaultButtonStyle;
+    private static String defaultButtonStyle;
 
-    boolean lookingAtFiction = false;
-    boolean lookingAtNonFiction = false;
+    private static boolean lookingAtFiction = false;
+    private static boolean lookingAtNonFiction = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -103,7 +114,7 @@ public class DisplayAvailableBooksController implements Initializable{
     @FXML
     private void btnLoanBookOnAction(ActionEvent e) {
         if(tvBookTable.getSelectionModel().getSelectedItem() == null) {
-            // TODO: No item selected.
+            DialogBoxHandler.ShowMessageDialog("Note", "Please select a book before performing any actions.", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -124,7 +135,7 @@ public class DisplayAvailableBooksController implements Initializable{
                 } catch (Exception exception) { }
 
                 if(fiction == null && nonFiction == null) {
-                    System.out.println("not found");
+                    DialogBoxHandler.ShowMessageDialog("Error", "The selected item could not be parsed into the Book. Please try again.", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
@@ -143,6 +154,8 @@ public class DisplayAvailableBooksController implements Initializable{
                     Book.fictionArrayList.set(pos, bookFromArray);
 
                     DialogBoxHandler.ShowMessageDialog("Book Successfully Updated", "The Book, " + bookFromArray.getTitle() + " has been loaned out to " + loaningTo + "!", JOptionPane.INFORMATION_MESSAGE);
+
+                    FileHandler.writeBooksToFile(); // Save the books to file.
                 } else if(nonFiction != null) {
                     NonFiction bookFromArray = Book.nonFictionArrayList.get(pos);
                     bookFromArray.setOutOnLoan(true);
@@ -151,11 +164,11 @@ public class DisplayAvailableBooksController implements Initializable{
                     Book.nonFictionArrayList.set(pos, bookFromArray);
 
                     DialogBoxHandler.ShowMessageDialog("Book Successfully Updated", "The Book, " + bookFromArray.getTitle() + " has been loaned out to " + loaningTo + "!", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    System.out.println("error");
-                    return;
-                }
 
+                    FileHandler.writeBooksToFile(); // Save the books to file.
+                } else {
+                    DialogBoxHandler.ShowMessageDialog("Error", "An error has occurred whilst trying to set the book to returned. Please try again.", JOptionPane.ERROR_MESSAGE);
+                }
 
                 FillTableWithAll();
             } else {
@@ -179,10 +192,11 @@ public class DisplayAvailableBooksController implements Initializable{
         } catch (RuntimeException exception) {
             if(tfSearchID.getText().isEmpty()) {
                 searchID = -1;
+            } else {
+                DialogBoxHandler.ShowMessageDialog("Warning", "An invalid character/number has been entered into the Search ID box, please amend.", JOptionPane.WARNING_MESSAGE);
+                return;
             }
-        } catch (Exception exception) {
-            throw exception;
-        }
+        } catch (Exception exception) { }
 
         String searchTitle = tfSearchTitle.getText(),
                 searchAuthor = tfSearchAuthor.getText();
@@ -193,7 +207,10 @@ public class DisplayAvailableBooksController implements Initializable{
 
         for(Fiction b : Book.fictionArrayList) {
             if(meetSearchCriteria(b, searchID, searchTitle, searchAuthor)) {
-                if(cbGenre.getSelectionModel().getSelectedIndex() < 0 || b.getGenre() == cbGenre.getSelectionModel().getSelectedItem()) {
+                if(cbGenre.getSelectionModel().getSelectedIndex() == 0) {
+                    books.add(b);
+                }
+                else if(cbGenre.getSelectionModel().getSelectedIndex() < 0 || b.getGenre() == cbGenre.getSelectionModel().getSelectedItem()) {
                     books.add(b);
                 }
             }
@@ -201,7 +218,10 @@ public class DisplayAvailableBooksController implements Initializable{
 
         for(NonFiction b : Book.nonFictionArrayList) {
             if(meetSearchCriteria(b, searchID, searchTitle, searchAuthor)) {
-                if(cbGenre.getSelectionModel().getSelectedIndex() < 0 || b.getGenre() == cbGenre.getSelectionModel().getSelectedItem()) {
+                if(cbGenre.getSelectionModel().getSelectedIndex() == 8) {
+                    books.add(b);
+                }
+                else if(cbGenre.getSelectionModel().getSelectedIndex() < 0 || b.getGenre() == cbGenre.getSelectionModel().getSelectedItem()) {
                     books.add(b);
                 }
             }
@@ -217,11 +237,9 @@ public class DisplayAvailableBooksController implements Initializable{
 
     private boolean meetSearchCriteria(Book b, int searchID, String searchTitle, String searchAuthor) {
         if(!b.isOutOnLoan()) {
-            if(searchContains(searchTitle, b.getTitle())) {
-                if(searchContains(searchAuthor, b.getAuthor())) {
-                    if(b.getId() == searchID || searchID == -1) {
-                        return true;
-                    }
+            if(StringWorker.searchContains(searchTitle, b.getTitle())) {
+                if(StringWorker.searchContains(searchAuthor, b.getAuthor())) {
+                    return b.getId() == searchID || searchID == -1;
                 }
             }
         }
@@ -229,12 +247,14 @@ public class DisplayAvailableBooksController implements Initializable{
         return false;
     }
 
-    private boolean searchContains(String searchFor, String searchFrom) {
-        if(searchFrom.toUpperCase().contains(searchFor.toUpperCase())
-                || searchFor == null
-                || searchFor.isEmpty()) {
-            return true;
-        }
-        return false;
+    @FXML
+    private void miFileQuitOnAction(ActionEvent e) {
+        Program.exitProgram();
+    }
+
+    @FXML
+    private void miHelpAboutOnAction(ActionEvent e) {
+        Program p = new Program();
+        p.loadFXML("FXMLs/AboutDialog.fxml", "About Book Loaning System", false, true);
     }
 }

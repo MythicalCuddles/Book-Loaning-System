@@ -13,6 +13,14 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/*****************************************************
+ Project Name:      B00714027 CW3
+ File Name:         AboutDialogController
+ Created by: 		Melissa Brennan
+ Student No:        B00714027
+ Comments:          Controller for FXMLs/AboutDialog.fxml
+ ******************************************************/
+
 public class AboutDialogController implements Initializable {
     @FXML Label lblProductName, lblVersion, lblAuthor, lblOther;
     @FXML TextArea taDetails;

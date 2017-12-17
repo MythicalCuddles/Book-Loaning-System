@@ -6,6 +6,14 @@ import Coursework.Extensions.BooleanWorker;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+/*****************************************************
+ Project Name:      B00714027 CW3
+ File Name:         NonFiction
+ Created by: 		Melissa Brennan
+ Student No:        B00714027
+ Comments:          Subclass of Superclass Book
+ ******************************************************/
+
 public class NonFiction extends Book implements Serializable {
     // Instance Variables
     private TypeOfNonFiction genre;

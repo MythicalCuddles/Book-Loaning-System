@@ -7,22 +7,54 @@ import Coursework.Objects.NonFiction;
 import javax.swing.*;
 import java.io.*;
 
+/*****************************************************
+ Project Name:      B00714027 CW3
+ File Name:         FileHandler
+ Created by: 		Melissa Brennan
+ Student No:        B00714027
+ Comments:          Class to handle external files.
+ ******************************************************/
+
 public class FileHandler {
-    private static File FictionBooks = new File("fictions.ser"),
-            NonFictionBooks = new File("non-fictions.ser");
-    private static File file;
-    static final JFileChooser fileChooser = new JFileChooser();
+    private static File FictionBooks = new File("fictions.ser"), // File to store Fiction Books.
+            NonFictionBooks = new File("non-fictions.ser"); // File to store Non-Fiction Books.
+    private static File file; // Selected File from User.
+    private static final JFileChooser fileChooser = new JFileChooser(); // File Chooser
 
-    public static void ensureExists() throws Exception {
-        if(!FictionBooks.exists()) {
-            FictionBooks.createNewFile();
-            System.out.println(FictionBooks.getName() + " created.");
+    public static void ensureExistsAndLoad() { // Method to check if book files exist.
+        if(didFictionFileExist()) { // If the file has existed:
+            attemptToLoadBooksFromFile(FictionBooks);  // Load the books from that file.
         }
 
-        if(!NonFictionBooks.exists()) {
-            NonFictionBooks.createNewFile();
-            System.out.println(NonFictionBooks.getName() + " created.");
+        if(didNonFictionFileExist()) { // If the file has existed:
+            attemptToLoadBooksFromFile(NonFictionBooks); // Load the books from that file.
         }
+    }
+
+    private static boolean didFictionFileExist() { // If the fiction file existed, returns true, else returns false.
+        try {
+            if(!FictionBooks.exists()) { // If the file doesn't exist:
+                FictionBooks.createNewFile(); // Create the file.
+                System.out.println("[DEBUG] " + FictionBooks.getName() + " created."); // Console message for debugging purposes.
+                return false; // Returns false as file was just created.
+            } else { return true; } // Returns true as file existed and may have content.
+        } catch (Exception exception) {
+            DialogBoxHandler.ShowMessageDialog("Error", "An error has occurred whilst attempting to create a file to store fiction books.", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+
+    private static boolean didNonFictionFileExist() { // If the non-fiction file existed, returns true, else returns false.
+        try {
+            if(!NonFictionBooks.exists()) { // If the file doesn't exist:
+                NonFictionBooks.createNewFile();  // Create the file.
+                System.out.println("[DEBUG] " + NonFictionBooks.getName() + " created."); // Console message for debugging purposes.
+                return false; // Returns false as file was just created.
+            } else { return true; } // Returns true as file existed and may have content.
+        } catch (Exception exception) {
+            DialogBoxHandler.ShowMessageDialog("Error", "An error has occurred whilst attempting to create a file to store non-fiction books.", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
     }
 
     public static boolean selectFile()
@@ -33,7 +65,8 @@ public class FileHandler {
         {
             file = fileChooser.getSelectedFile();
 
-            System.out.println("[INFO] User has changed File to: " + file.getName());
+            System.out.println("[DEBUG] User has selected File: " + file.getName());
+            attemptToLoadBooksFromFile(file);
 
             return true;
         }
@@ -44,47 +77,73 @@ public class FileHandler {
         }
     }
 
-    public static void writeBooksToFile() throws Exception {
-        ObjectOutputStream fictionObjectStream = new ObjectOutputStream(new FileOutputStream(FictionBooks)),
-                nonFictionObjectStream = new ObjectOutputStream(new FileOutputStream(NonFictionBooks));
+    public static void writeBooksToFile() {
+        didFictionFileExist();
+        didNonFictionFileExist();
 
-        for(Fiction f : Book.fictionArrayList) {
-            fictionObjectStream.writeObject(f);
+        try {
+            ObjectOutputStream fictionObjectStream = new ObjectOutputStream(new FileOutputStream(FictionBooks)),
+                    nonFictionObjectStream = new ObjectOutputStream(new FileOutputStream(NonFictionBooks));
+
+            for(int i = 0; i < Book.fictionArrayList.size(); i++) {
+                fictionObjectStream.writeObject(Book.fictionArrayList.get(i));
+            }
+
+            for(int i = 0; i < Book.nonFictionArrayList.size(); i++) {
+                nonFictionObjectStream.writeObject(Book.nonFictionArrayList.get(i));
+            }
+
+            fictionObjectStream.close();
+            nonFictionObjectStream.close();
+        } catch (FileNotFoundException exception) {
+            return;
+        } catch (IOException exception) {
+            return;
+        } catch (Exception exception) {
+            DialogBoxHandler.ShowMessageDialog("Error", "An error has occurred whilst trying to write the books to files.", JOptionPane.ERROR_MESSAGE);
         }
-
-        for(NonFiction n : Book.nonFictionArrayList) {
-            nonFictionObjectStream.writeObject(n);
-        }
-
-        fictionObjectStream.close();
-        nonFictionObjectStream.close();
     }
 
-    public static void loadBooksFromSerFile() throws Exception {
-        ObjectInputStream fictionObjectStream = new ObjectInputStream(new FileInputStream(FictionBooks)),
-                nonFictionObjectStream = new ObjectInputStream(new FileInputStream(NonFictionBooks));
+    private static void attemptToLoadBooksFromFile(File file) {
+        try {
+            ObjectInputStream fictionObjectStream = new ObjectInputStream(new FileInputStream(file));
 
-        boolean continueFiction = true, continueNonFiction = true;
-
-        while(continueFiction) {
-            Object o = fictionObjectStream.readObject();
-            if(o != null) {
-                Book.fictionArrayList.add((Fiction) o);
-            } else {
-                continueFiction = false;
+            try {
+                Object fictionObject = null;
+                do {
+                    fictionObject = fictionObjectStream.readObject();
+                    Book.fictionArrayList.add((Fiction)fictionObject);
+                    Book.addNoOfBooks(1);
+                } while(fictionObject != null);
+            } catch(Exception e) {
+                // Do Nothing - Error will be thrown when all objects read and attempting to continue to read.
             }
+
+            fictionObjectStream.close();
+        } catch (Exception e) {
+
         }
 
-        while(continueNonFiction) {
-            Object o = nonFictionObjectStream.readObject();
-            if(o != null) {
-                Book.nonFictionArrayList.add((NonFiction) o);
-            } else {
-                continueNonFiction = false;
+        try {
+            ObjectInputStream nonFictionObjectStream = new ObjectInputStream(new FileInputStream(file));
+
+            try {
+                Object nonFictionObject = null;
+                do {
+                    nonFictionObject = nonFictionObjectStream.readObject();
+                    Book.nonFictionArrayList.add((NonFiction) nonFictionObject);
+                    Book.addNoOfBooks(1);
+                } while(nonFictionObject != null);
+            } catch(Exception e) {
+                // Do Nothing - Error will be thrown when all objects read and attempting to continue to read.
             }
+
+            nonFictionObjectStream.close();
+        } catch (Exception e) {
+
         }
 
-        fictionObjectStream.close();
-        nonFictionObjectStream.close();
+        System.out.println("[DEBUG] " + Book.getNoOfBooks() + " Books After Fiction Import.");
+        System.out.println("[DEBUG] " + Book.getNoOfBooks() + " Books After Non-Fiction Import.");
     }
 }

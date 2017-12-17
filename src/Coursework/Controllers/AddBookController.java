@@ -3,9 +3,11 @@ package Coursework.Controllers;
 import Coursework.Enums.TypeOfFiction;
 import Coursework.Enums.TypeOfNonFiction;
 import Coursework.Handlers.DialogBoxHandler;
+import Coursework.Handlers.FileHandler;
 import Coursework.Objects.Book;
 import Coursework.Objects.Fiction;
 import Coursework.Objects.NonFiction;
+import Coursework.Program;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +24,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+/*****************************************************
+ Project Name:      B00714027 CW3
+ File Name:         AddBookController
+ Created by: 		Melissa Brennan
+ Student No:        B00714027
+ Comments:          Controller for FXMLs/AddBook.fxml
+ ******************************************************/
+
 public class AddBookController implements Initializable {
     @FXML TextField tfID, tfBookTitle, tfBookAuthor, tfLoanHolder;
     @FXML CheckBox cbOutOnLoan;
@@ -29,7 +39,7 @@ public class AddBookController implements Initializable {
     @FXML ComboBox cbGenre;
     @FXML DatePicker dpDateOfLoan;
 
-    boolean selectedFiction = false;
+    private boolean selectedFiction = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,7 +76,7 @@ public class AddBookController implements Initializable {
     }
 
     @FXML
-    private void btnAddBookOnAction(ActionEvent e) throws Exception {
+    private void btnAddBookOnAction(ActionEvent e) {
         if(tfBookTitle.getText().isEmpty()) {
             DialogBoxHandler.ShowMessageDialog("Warning!", "Please enter the Title of the book.", JOptionPane.WARNING_MESSAGE);
             return;
@@ -101,6 +111,7 @@ public class AddBookController implements Initializable {
             }
         }
 
+        FileHandler.writeBooksToFile(); // Save the books to file.
         DialogBoxHandler.ShowMessageDialog("Action Successful","Your book (" + tfBookTitle.getText() + ") has been added successfully.", JOptionPane.INFORMATION_MESSAGE);
         btnCancelOnAction(null);
     }
@@ -119,5 +130,16 @@ public class AddBookController implements Initializable {
     @FXML
     private void btnCancelOnAction(ActionEvent e) {
         ((Stage) btnCancel.getScene().getWindow()).close();
+    }
+
+    @FXML
+    private void miFileQuitOnAction(ActionEvent e) {
+        Program.exitProgram();
+    }
+
+    @FXML
+    private void miHelpAboutOnAction(ActionEvent e) {
+        Program p = new Program();
+        p.loadFXML("FXMLs/AboutDialog.fxml", "About Book Loaning System", false, true);
     }
 }
