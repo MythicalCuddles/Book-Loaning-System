@@ -113,6 +113,10 @@ public class AddBookController implements Initializable {
         } else {
             if(!ArrayListWorker.doesListContainBook(Book.nonFictionArrayList, tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfNonFiction) cbGenre.getSelectionModel().getSelectedItem())) {
                 Book.nonFictionArrayList.add(new NonFiction(tfBookTitle.getText(), tfBookAuthor.getText(), (TypeOfNonFiction) cbGenre.getSelectionModel().getSelectedItem(), cbOutOnLoan.isSelected(), tfLoanHolder.getText(), dpDateOfLoan.getValue()));
+
+                FileHandler.writeBooksToFile(); // Save the books to file.
+                DialogBoxHandler.ShowMessageDialog("Action Successful","Your book (" + tfBookTitle.getText() + ") has been added successfully.", JOptionPane.INFORMATION_MESSAGE);
+                btnCancelOnAction(null);
             } else {
                 DialogBoxHandler.ShowMessageDialog("Info", "Book already exists in the list.", JOptionPane.INFORMATION_MESSAGE);
             }
