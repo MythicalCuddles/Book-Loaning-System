@@ -34,7 +34,7 @@ import java.util.ArrayList;
  ******************************************************/
 
 public class Program extends Application {
-    private static Image iconLogo = new Image("http://scm.ulster.ac.uk/~B00714027/files/icons/books.png");
+    private static Image iconLogo = new Image("Resources/books.png");
 
     @Override
     public void start(Stage stage) {
