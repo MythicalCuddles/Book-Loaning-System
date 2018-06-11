@@ -41,4 +41,6 @@ There will be no extra marks given for the following, but you can implement them
 - Instead of the teacher entering in the details of book available for loan, the items’ details can be read in from text files
 - Using the Java Date class to record the dates of loans 
 
+___
+
 [![footer](http://i.imgur.com/YEgqCsm.png)](https://github.com/MythicalCuddles)
