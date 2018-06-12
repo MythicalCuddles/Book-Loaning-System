@@ -64,4 +64,4 @@ ___
 
 ___
 
-[![footer](http://imgserv.mythicalcuddles.xyz/MythicalCuddles.png)](https://github.com/MythicalCuddles)
+[![footer](http://imgserv.mythicalcuddles.xyz/Signature.png)](https://github.com/MythicalCuddles)
