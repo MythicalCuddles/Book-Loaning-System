@@ -43,4 +43,4 @@ There will be no extra marks given for the following, but you can implement them
 
 ___
 
-[![footer](http://i.imgur.com/YEgqCsm.png)](https://github.com/MythicalCuddles)
+[![footer](http://imgserv.mythicalcuddles.xyz/MythicalCuddles.png)](https://github.com/MythicalCuddles)
