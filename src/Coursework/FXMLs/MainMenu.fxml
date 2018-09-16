@@ -9,24 +9,24 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Coursework.Controllers.MainMenuController">
+<VBox prefHeight="630.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Coursework.Controllers.MainMenuController">
 <children>
     <MenuBar VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="File">
                 <items>
-                    <MenuItem fx:id="miFileQuit" onAction="#miFileQuitOnAction" mnemonicParsing="false" text="Quit" />
+                    <MenuItem fx:id="miFileQuit" mnemonicParsing="false" onAction="#miFileQuitOnAction" text="Quit" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
                 <items>
-                    <MenuItem fx:id="miEditImport" onAction="#miEditImportOnAction" mnemonicParsing="false" text="Import Books from File" />
-                    <MenuItem fx:id="miEditExport" onAction="#miEditExportOnAction" mnemonicParsing="false" text="Export Books to File" />
+                    <MenuItem fx:id="miEditImport" mnemonicParsing="false" onAction="#miEditImportOnAction" text="Import Books from File" />
+                    <MenuItem fx:id="miEditExport" mnemonicParsing="false" onAction="#miEditExportOnAction" text="Export Books to File" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
                 <items>
-                    <MenuItem fx:id="miHelpAbout" onAction="#miHelpAboutOnAction" mnemonicParsing="false" text="About" />
+                    <MenuItem fx:id="miHelpAbout" mnemonicParsing="false" onAction="#miHelpAboutOnAction" text="About" />
                     <!--<MenuItem fx:id="miHelpHelp" onAction="#miHelpHelpOnAction" mnemonicParsing="false" text="Help" />-->
                 </items>
             </Menu>
@@ -35,10 +35,10 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="300.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
         <children>
             <ImageView fx:id="ivLogoImage" fitHeight="120.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="btnAddBook" onAction="#btnAddNewBookOnAction" layoutX="65.0" layoutY="177.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="250.0" text="Add New Book" />
-            <Button fx:id="btnDisplayBooks" onAction="#btnDisplayAvailableBooksOnAction" layoutX="325.0" layoutY="177.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="250.0" text="Display Available Books" />
-            <Button fx:id="btnDisplayLoans" onAction="#btnDisplayBooksOnLoanOnAction" layoutX="65.0" layoutY="282.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="250.0" text="Display Books On Loan" />
-            <Button fx:id="btnQuit" onAction="#btnQuitOnAction" layoutX="325.0" layoutY="282.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="250.0" text="Quit" />
+            <Button fx:id="btnAddBook" layoutX="70.0" layoutY="175.0" mnemonicParsing="false" onAction="#btnAddNewBookOnAction" prefHeight="100.0" prefWidth="500.0" text="Add New Book" />
+            <Button fx:id="btnDisplayBooks" layoutX="70.0" layoutY="278.0" mnemonicParsing="false" onAction="#btnDisplayAvailableBooksOnAction" prefHeight="100.0" prefWidth="500.0" text="Display Available Books" />
+            <Button fx:id="btnDisplayLoans" layoutX="70.0" layoutY="381.0" mnemonicParsing="false" onAction="#btnDisplayBooksOnLoanOnAction" prefHeight="100.0" prefWidth="500.0" text="Display Books On Loan" />
+            <Button fx:id="btnQuit" layoutX="70.0" layoutY="484.0" mnemonicParsing="false" onAction="#btnQuitOnAction" prefHeight="100.0" prefWidth="500.0" text="Quit" />
             <Label alignment="CENTER" layoutY="125.0" prefHeight="25.0" prefWidth="643.0" text="Welcome back, User!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                 <font>
                     <Font size="14.0" />
