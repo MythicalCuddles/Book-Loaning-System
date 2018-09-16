@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="B00714027 CW3:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/B00714027_CW3_jar</output-path>
+    <root id="archive" name="B00714027 CW3.jar">
+      <element id="module-output" name="B00714027 CW3" />
+    </root>
+  </artifact>
+</component>
