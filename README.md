@@ -1,11 +1,10 @@
+<div style="text-align:center"><img src ="http://imgserv.mythicalcuddles.xyz/Ulster%20University/COM187/CW3/logo.png" /></div>
+
+# Book Loaning System (COM187/CW3)
 ![GitHub release](https://img.shields.io/github/release/MythicalCuddles/Book-Loaning-System.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/MythicalCuddles/Book-Loaning-System.svg)
 ![GitHub Release Date](https://img.shields.io/github/release-date/MythicalCuddles/Book-Loaning-System.svg)
 ![GitHub license](https://img.shields.io/github/license/MythicalCuddles/Book-Loaning-System.svg)
-
-<div style="text-align:center"><img src ="http://imgserv.mythicalcuddles.xyz/Ulster%20University/COM187/CW3/logo.png" /></div>
-
-# Book Loaning System (COM187/CW3)
 
 ## Scenario
 
